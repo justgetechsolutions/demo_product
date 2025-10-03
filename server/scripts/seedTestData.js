@@ -5,7 +5,7 @@ const User = require('../models/User');
 const Staff = require('../models/Staff');
 const Restaurant = require('../models/Restaurant');
 
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/qr_ordering';
+const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://tradewithengineer369:tradewithengineer369@cluster0.g7wwwwc.mongodb.net/';
 
 async function seed() {
   await mongoose.connect(MONGO_URI);

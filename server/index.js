@@ -37,6 +37,7 @@ const { Server } = require('socket.io');
 const allowedOrigins = [
   'https://demo-product-i5ve.onrender.com',
   'https://demo-product-six.vercel.app',
+  'http://localhost:3000'
 ];
 // app.use(cors({ origin: '*', credentials: true }));
 

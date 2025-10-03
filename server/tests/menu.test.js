@@ -6,7 +6,7 @@ const app = require('../index'); // You may need to export the app from index.js
 describe('Menu Isolation by restaurantSlug', () => {
   beforeAll(async () => {
     // Connect to test DB if needed
-    // await mongoose.connect('mongodb://localhost:27017/qr_ordering_test');
+    // await mongoose.connect('mongodb+srv://tradewithengineer369:tradewithengineer369@cluster0.g7wwwwc.mongodb.net/_test');
     // Seed test data
     await MenuItem.create([
       { restaurantSlug: 'blue-orchid', name: 'Idli', price: 50 },
