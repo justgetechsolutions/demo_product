@@ -99,7 +99,7 @@ app.use((req, res, next) => {
 });
 
 // Handle preflight for all routes with the same CORS config
-app.options('*', cors({
+app.options('(.*)', cors({
   origin: function (origin, callback) {
     // Allow requests with no origin (like mobile apps or curl requests)
     if (!origin) return callback(null, true);
