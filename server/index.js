@@ -35,6 +35,7 @@ const { Server } = require('socket.io');
 
 // CORS configuration for both development and production
 const allowedOrigins = [
+  'https://demo-product-i5ve.onrender.com',
   'https://qr-ordering-crbq.onrender.com',
   'http://localhost:3000',
   'https://qr-ordering-beryl.vercel.app',
