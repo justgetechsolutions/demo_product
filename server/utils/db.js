@@ -1,12 +1,13 @@
 const mongoose = require('mongoose');
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/qr_ordering';
+// In production, require MONGODB_URI to be provided. In dev, fallback to local.
+const MONGODB_URI = process.env.MONGODB_URI || (process.env.NODE_ENV !== 'production' ? 'mongodb://127.0.0.1:27017/qr_ordering' : '');
 
 const connectDB = async () => {
   try {
-    await mongoose.connect(MONGODB_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    if (!MONGODB_URI) {
+      throw new Error('MONGODB_URI is not set. Provide a cloud MongoDB connection string in environment variables.');
+    }
+    await mongoose.connect(MONGODB_URI);
     console.log('MongoDB connected successfully');
   } catch (err) {
     console.error('MongoDB connection error:', err);
