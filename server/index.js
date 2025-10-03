@@ -37,6 +37,7 @@ const { Server } = require('socket.io');
 const allowedOrigins = [
   'https://demo-product-i5ve.onrender.com',
   'https://qr-ordering-crbq.onrender.com',
+  'https://demo-product-six.vercel.app',
   'http://localhost:3000',
   'https://qr-ordering-beryl.vercel.app',
   // 'https://hearings-lane-part-casio.trycloudflare.com',
