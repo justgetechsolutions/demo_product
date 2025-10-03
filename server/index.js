@@ -118,7 +118,7 @@ app.use(express.json());
 // Connect to MongoDB
 connectDB().catch(err => {
   console.error('DB connection error:', err);
-  process.exit(1);
+  // process.exit(1);
 });
 
 // Root route
