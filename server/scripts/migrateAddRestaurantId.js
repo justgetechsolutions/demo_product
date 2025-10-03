@@ -6,7 +6,7 @@ const Staff = require('../models/Staff');
 const User = require('../models/User');
 const Restaurant = require('../models/Restaurant');
 
-const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://tradewithengineer369:tradewithengineer369@cluster0.g7wwwwc.mongodb.net/';
+const MONGO_URI = process.env.MONGODB_URI || 'mongodb+srv://tradewithengineer369:tradewithengineer369@cluster0.g7wwwwc.mongodb.net/';
 
 async function migrate() {
   await mongoose.connect(MONGO_URI);
