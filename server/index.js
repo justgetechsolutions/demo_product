@@ -34,19 +34,11 @@ const server = http.createServer(app);
 const { Server } = require('socket.io');
 
 // CORS configuration for both development and production
-// const allowedOrigins = [
-//   'https://demo-product-i5ve.onrender.com',
-//   'https://qr-ordering-crbq.onrender.com',
-//   'https://demo-product-six.vercel.app',
-//   'http://localhost:3000',
-//   'https://qr-ordering-beryl.vercel.app',
-//   // 'https://hearings-lane-part-casio.trycloudflare.com',
-//   'https://creations-mins-exception-roots.trycloudflare.com',
-//   'https://qr-ordering-crbq.onrender.com',
-//   'https://yourhotelmenu.ngrok.io', // Ngrok frontend domain
-//   'https://backend.hotel.com'       // Cloudflare backend domain
-// ];
-app.use(cors({ origin: '*', credentials: true }));
+const allowedOrigins = [
+  'https://demo-product-i5ve.onrender.com',
+  'https://demo-product-six.vercel.app',
+];
+// app.use(cors({ origin: '*', credentials: true }));
 
 
 const io = new Server(server, {
