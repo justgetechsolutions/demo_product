@@ -35,6 +35,7 @@ const { Server } = require('socket.io');
 
 // CORS configuration for both development and production
 const allowedOrigins = [
+  'https://qr-ordering-crbq.onrender.com',
   'http://localhost:3000',
   'https://qr-ordering-beryl.vercel.app',
   // 'https://hearings-lane-part-casio.trycloudflare.com',
