@@ -22,6 +22,7 @@ import AdminFeedback from './pages/AdminFeedback.tsx';
 import CalendarView from './pages/CalendarView.tsx';
 import Calendar from './pages/Calendar.tsx';
 import MakeOrder from './pages/MakeOrder.tsx';
+import RestaurantSettings from './pages/RestaurantSettings.tsx';
 
 function PrivateRoute({ children }: { children: any }) {
   const { isAuthenticated } = useAuth();
@@ -72,6 +73,7 @@ function AppRoutes() {
         <Route path="calendar" element={<Calendar />} />
         <Route path="make-order" element={<MakeOrder />} />
         <Route path="feedback" element={<AdminFeedback />} />
+        <Route path="settings" element={<RestaurantSettings />} />
         <Route path="*" element={<Navigate to="tables" replace />} />
       </Routes></AdminLayout></ProtectedRoute>} />
     </Routes>

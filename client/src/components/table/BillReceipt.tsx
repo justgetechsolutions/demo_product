@@ -39,12 +39,13 @@ const BillReceipt: React.FC<BillReceiptProps> = ({ order, table, gstEnabled, gst
       `${item.name} x${item.quantity} = ₹${item.price * item.quantity}`
     ).join('\n');
 
+    const restaurantName = order.billingInfo?.restaurantName || 'Restaurant';
     const derivedSubtotal = order.items.reduce((sum: number, i: any) => sum + (Number(i.price) || 0) * (Number(i.quantity) || 0), 0);
     const gstAmt = gstEnabled ? (order.gstAmount || (derivedSubtotal * (gstPercentage || 0) / 100)) : 0;
     const discountAmt = Math.max(0, Number(discount || 0));
     const total = Math.max(0, derivedSubtotal + gstAmt - discountAmt);
     
-    return `*Kismat Kathiyawadi*\n\n*Bill #${order.billNumber}*\nTable: ${table.tableNumber}\nDate: ${formatDate(order.timestamp)}\nTime: ${formatTime(order.timestamp)}\n\n*Items:*\n${items}\n\n*Subtotal:* ₹${derivedSubtotal.toFixed(2)}\n${gstEnabled ? `*GST (${gstPercentage}%):* ₹${gstAmt.toFixed(2)}\n` : ''}${discountAmt > 0 ? `*Discount:* -₹${discountAmt.toFixed(2)}\n` : ''}*Grand Total:* ₹${total.toFixed(2)}\n\nThank you for visiting!`;
+    return `*${restaurantName}*\n\n*Bill #${order.billNumber}*\nTable: ${table.tableNumber}\nDate: ${formatDate(order.timestamp)}\nTime: ${formatTime(order.timestamp)}\n\n*Items:*\n${items}\n\n*Subtotal:* ₹${derivedSubtotal.toFixed(2)}\n${gstEnabled ? `*GST (${gstPercentage}%):* ₹${gstAmt.toFixed(2)}\n` : ''}${discountAmt > 0 ? `*Discount:* -₹${discountAmt.toFixed(2)}\n` : ''}*Grand Total:* ₹${total.toFixed(2)}\n\nThank you for visiting!`;
   };
 
   const formatDate = (date: string) => {
@@ -105,9 +106,26 @@ const BillReceipt: React.FC<BillReceiptProps> = ({ order, table, gstEnabled, gst
           >
                          {/* Header Section */}
              <div className="text-center mb-6">
-               <div className="font-bold text-base mb-2">Kismat Kathiyawadi</div>
-               <div className="text-xs mb-1">Shukan Mall Char Rasta, Science City, Sola</div>
-               <div className="text-xs mb-3">Phone: +91 98765 43210</div>
+               <div className="font-bold text-base mb-2">
+                 {(order.billingInfo?.restaurantName ? order.billingInfo.restaurantName : 'Restaurant Name')}
+               </div>
+               <div className="text-xs mb-1">
+                 {(order.billingInfo?.address ? order.billingInfo.address : 'Address')}
+               </div>
+               {(order.billingInfo?.city || order.billingInfo?.postalCode) && (
+                 <div className="text-xs mb-1">
+                   {order.billingInfo?.city}{order.billingInfo?.city && order.billingInfo?.postalCode ? ', ' : ''}{order.billingInfo?.postalCode}
+                 </div>
+               )}
+               {order.billingInfo?.phone && (
+                 <div className="text-xs mb-3">Phone: {order.billingInfo.phone}</div>
+               )}
+               {order.billingInfo?.email && (
+                 <div className="text-xs mb-1">Email: {order.billingInfo.email}</div>
+               )}
+               {order.billingInfo?.gstNumber && (
+                 <div className="text-xs mb-3">GST: {order.billingInfo.gstNumber}</div>
+               )}
              </div>
 
              {/* Bill Details */}

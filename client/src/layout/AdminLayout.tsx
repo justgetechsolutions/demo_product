@@ -18,6 +18,7 @@ function AdminLayout({ children }: { children: any }) {
     { to: `/admin/${restaurantId}/staff`, label: 'Staff', icon: <Users className="w-5 h-5" /> },
     { to: `/admin/${restaurantId}/feedback`, label: 'Feedback', icon: <MessageSquare className="w-5 h-5" /> },
     { to: `/admin/${restaurantId}/calendar`, label: 'Calendar', icon: <Calendar className="w-5 h-5" /> },
+    { to: `/admin/${restaurantId}/settings`, label: 'Settings', icon: <Settings className="w-5 h-5" /> },
   ];
 
   const handleLogout = () => {
